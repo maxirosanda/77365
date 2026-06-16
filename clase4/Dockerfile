@@ -1,7 +1,8 @@
-FROM node:24.11.1-alpine
+FROM node:22.18.0-alpine
 WORKDIR /app
-COPY package*.json ./
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm install
-COPY . .
-EXPOSE 3000
+COPY /src ./src/
+EXPOSE 8080
 CMD ["npm", "run", "start"]
